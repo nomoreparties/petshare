@@ -1,0 +1,27 @@
+<h1>Name:   <%= @pet.name %></h1>
+<h2>Animal: <%= @pet.animal %></h2>
+<h2>Breed: <%= @pet.breed %></h2><br>
+
+<% if current_user.id == @pet.user_id %>
+  <h3>Make a New Post:</h3>
+  <%= form_for @post do |form| %>
+    <%= form.file_field :uploads, multiple: true %> <br>
+    <%= form.label :caption %>
+    <%= form.text_field :caption %> <br>
+    <%= form.hidden_field :pet_id, value: "#{@pet.id}" %> <br>
+    <%= form.submit %> <br>
+  <% end %>
+<% else %>
+  <% if current_user.follows.include? "#{@pet.id}" %>
+    <%= link_to 'Unfollow', user_unfollow_path(@pet.id), method: :post %>
+  <% else %>
+    <%= link_to 'Follow', user_follow_path(@pet.id), method: :post %>
+  <% end %>
+<% end %>
+  <br><br>
+
+<% @posts.each do |post| %>
+  <% if post.pet_id == @pet.id %>
+    <%= post.caption %><br>
+  <% end %>
+<% end %>

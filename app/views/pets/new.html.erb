@@ -1,0 +1,11 @@
+<h1>Register New Pet:</h1>
+
+<%= form_for @pet do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %> <br>
+  <%= form.label :animal %>
+  <%= form.text_field :animal %> <br>
+  <%= form.label :breed %>
+  <%= form.text_field :breed %> <br>
+  <%= form.submit %> <br>
+<% end %>

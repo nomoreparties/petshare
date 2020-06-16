@@ -1,0 +1,13 @@
+<p>Hello, <%= current_user.email %>!</p>
+
+<% @posts.each do |post| %>
+  <% if current_user.follows.include? "#{post.pet_id}" %>
+    <li>
+      <%= post.caption %> <br>
+    </li>
+  <% end %>
+<% end %>
+<br>
+
+<%= link_to 'Look for Pets', pets_path %><br>
+<%= link_to 'Logout', destroy_user_session_path, :method => :delete %>

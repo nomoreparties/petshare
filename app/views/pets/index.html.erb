@@ -1,0 +1,10 @@
+<br>
+
+<% @pets.each do |pet| %>
+  <li>
+    Name: <%= link_to pet.name, pet_path(pet.id) %>, Animal: <%= pet.animal %>, Breed: <%= pet.breed %> owned by <%= pet.user.email %> <br>
+  </li>
+<% end %>
+
+<%= link_to 'Register New Pet', new_pet_path %> <br>
+<%= link_to 'Home', users_path %>
