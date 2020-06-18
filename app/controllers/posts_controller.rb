@@ -3,7 +3,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
 
     if @post.save
-      redirect_to :action => "show", :id => "#{@post.pet_id}"
+      redirect_to :action => "show", :id => "#{@post.id}"
     else
       redirect_to :pets
     end
@@ -13,8 +13,16 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
+  def destroy
+    @post = Post.find(params[:id])
+
+    if @post.destroy
+      redirect_to root_path
+    end
+  end
+
   private
     def post_params
-      params.require(:post).permit(:caption, :pet_id, uploads: [])
+      params.require(:post).permit(:caption, :pet_id, :upload)
     end
 end

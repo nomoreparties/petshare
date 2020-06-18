@@ -1,13 +1,43 @@
-<p>Hello, <%= current_user.email %>!</p>
+<style>
+.img-circular{
+ width: 60px;
+ height: 60px;
+ background-size: cover;
+ border-radius: 100px;
+ -webkit-border-radius: 100px;
+ -moz-border-radius: 100px;
+ float: left;
+ float: top;
+}
+</style>
 
-<% @posts.each do |post| %>
-  <% if current_user.follows.include? "#{post.pet_id}" %>
-    <li>
-      <%= post.caption %> <br>
-    </li>
-  <% end %>
-<% end %>
-<br>
+<section class="container text-center">
 
-<%= link_to 'Look for Pets', pets_path %><br>
-<%= link_to 'Logout', destroy_user_session_path, :method => :delete %>
+<section class="row">
+  <section class="col bg-info">
+  <p>Hello, <%= current_user.email %>!</p>
+  </section>
+  <section class="col-6 bg-dark">
+    <% @posts.each do |post| %>
+      <% pet = Pet.find(post.pet_id) %>
+      <% if current_user.follows.include? "#{post.pet_id}" or pet.user_id == current_user.id %>
+        <section class="card p-2 pt-3 pb-3">
+          <section class="row">
+            <section class="col-1 bg-danger ">
+              <%= image_tag post.upload, :class=> "img-circular" %>
+            </section>
+            <section class="col-8 pt-3 ml-5">
+              <p> <%= link_to post.caption, post_path(post.id) %> by <%= link_to pet.name, pet_path(pet.id) %></p>
+            </section>
+          </section>
+        </section>
+      <% end %>
+    <% end %>
+  </section>
+  <section class="col bg-danger">
+    <%= link_to 'Look for Pets', pets_path %><br>
+    <%= link_to 'Logout', destroy_user_session_path, :method => :delete %>
+  </section>
+
+</section>
+</section>

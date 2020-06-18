@@ -1,1 +1,14 @@
-<%= @post.caption %>
+<section class="text-center">
+
+  <h1><%= @post.caption %></h1>
+  <% pet = Pet.find(@post.pet_id) %>
+  <% if pet.user_id == current_user.id %>
+    <%= link_to 'Delete', post_path(@post), :method => :delete %>
+  <% end %>
+  <br><br>
+
+  <% if @post.upload.attached? %>
+    <%= image_tag @post.upload, height: 300 %>
+  <% end %>
+
+</section>

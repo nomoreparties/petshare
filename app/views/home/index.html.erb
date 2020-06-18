@@ -1,4 +1,31 @@
-<h1>Petshare!</h1>
+<style>
+  body {
+    background-image: url(<%= asset_path 'background.jpg' %>);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+  }
+</style>
 
-<%= link_to 'Register', new_user_registration_path %> <br>
-<%= link_to 'Login', new_user_session_path %>
+<head>
+  <title>Petshare</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+
+<body>
+
+  <section class="container text-center pt-3">
+
+  <h1 style="color:white;">Petshare!</h1>
+
+  <%= button_to 'Register', new_user_registration_path, class: "button1" %>
+  <%= button_to 'Login', new_user_session_path, class: "button1" %>
+
+  </section>
+
+</body>
