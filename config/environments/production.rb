@@ -122,4 +122,5 @@ Rails.application.configure do
   # Generate digests for assets URLs
   config.assets.digest = true
 
+  Rails.application.routes.default_url_options[:host] = 'petshare.heroku.com'
 end
