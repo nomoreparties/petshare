@@ -1,3 +1,7 @@
+<head>
+  <title>New Pet</title>
+</head>
+
 <section class="container">
   <section class="row" style="justify-content:center;">
     <section class="text-center p-3" style="border:solid;border-radius:10px;border-color:black;">
@@ -15,7 +19,7 @@
         </section><br>
         <%= form.label :breed, "Breed / Type of Animal:" %> &nbsp
         <section style="float:right;">
-        <%= form.text_field :breed, required: true %>
+        <%= form.text_field :breed %>
         </section><br><br>
         <section class="text-center p-3" style="border:solid;border-radius:10px;border-color:black;">
         <%= form.label :upload, "Upload a Profile Picture:" %><br>

@@ -1,6 +1,6 @@
 class PetsController < ApplicationController
   def index
-    @pets = Pet.all.reverse
+    @pets = Pet.all.sort_by(&:name)
   end
 
   def new
@@ -11,7 +11,7 @@ class PetsController < ApplicationController
     @pet = current_user.pets.new(pet_params)
 
     if @pet.save
-      redirect_to :pets
+      redirect_to :action => "show", :id => "#{@pet.id}"
     else
       redirect_to :back
     end
@@ -24,8 +24,12 @@ class PetsController < ApplicationController
     @followed = 0
   end
 
-  def list
-    @pets = Pet.all
+  def destroy
+    @pet = Pet.find(params[:id])
+
+    if @pet.destroy
+      redirect_to root_path
+    end
   end
 
   private

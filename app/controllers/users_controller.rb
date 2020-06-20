@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     @user.follows << params[:user_id]
 
     if @user.save
-      redirect_to :pets
+      redirect_to request.referrer
     else
       redirect_to :new_pet
     end
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     @user.follows.delete(params[:user_id])
 
     if @user.save
-      redirect_to :pets
+      redirect_to request.referrer
     else
       redirect_to :new_pet
     end
