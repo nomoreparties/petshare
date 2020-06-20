@@ -1,27 +1,57 @@
-<h1>Name:   <%= @pet.name %></h1>
-<h2>Animal: <%= @pet.animal %></h2>
-<h2>Breed: <%= @pet.breed %></h2><br>
+<section class="container text-center">
 
-<% if current_user.id == @pet.user_id %>
-  <h3>Make a New Post:</h3>
-  <%= form_for @post do |form| %>
-    <%= form.file_field :upload, required: true %> <br>
-    <%= form.label :caption %>
-    <%= form.text_field :caption %> <br>
-    <%= form.hidden_field :pet_id, value: "#{@pet.id}" %> <br>
-    <%= form.submit %> <br>
-  <% end %>
-<% else %>
-  <% if current_user.follows.include? "#{@pet.id}" %>
-    <%= link_to 'Unfollow', user_unfollow_path(@pet.id), method: :post %>
-  <% else %>
-    <%= link_to 'Follow', user_follow_path(@pet.id), method: :post %>
-  <% end %>
-<% end %>
-  <br><br>
+<section class="row">
+  <section class="col-1">
+  </section>
+  <section class="col-3">
+    <section class="bg-danger m-1 p-3">
+      <%= image_tag @pet.upload, :class=> "img-circular3" %><br>
+      <h1><%= @pet.name %></h1>
+      <h2><%= @pet.animal %></h2>
+      <h2><%= @pet.breed %></h2>
+    </section>
 
-<% @posts.each do |post| %>
-  <% if post.pet_id == @pet.id %>
-    <%= post.caption %><br>
-  <% end %>
-<% end %>
+      <% if current_user.id == @pet.user_id %>
+        <section class="text-center p-3" style="border:solid;border-radius:10px;border-color:black;">
+        <h3>Make a New Post:</h3>
+        <%= form_for @post do |form| %>
+          <section class="text-center p-1" style="border:solid;border-radius:10px;border-color:black;">
+          <%= form.label :upload, "Upload your Picture:" %><br>
+          <%= form.file_field :upload, required: true, accept:'image/*' %> <br>
+          </section>
+          <%= form.label :caption, "Caption:" %><br>
+          <%= form.text_field :caption %> <br>
+          <%= form.hidden_field :pet_id, value: "#{@pet.id}" %> <br>
+          <%= form.submit class: 'button3' %> <br>
+        <% end %>
+        </section>
+      <% else %>
+      <section class="bg-danger m-1 p-4 text-center">
+        <% if current_user.follows.include? "#{@pet.id}" %>
+          <%= button_to 'Unfollow', user_unfollow_path(@pet.id), method: :post, class: "button1" %>
+        <% else %>
+          <%= button_to 'Follow', user_follow_path(@pet.id), method: :post, class: "button1" %>
+        <% end %>
+      </section>
+      <% end %>
+  </section>
+
+  <section class="col-7 bg-dark">
+    <% @posts.each do |post| %>
+      <% if post.pet_id == @pet.id %>
+        <section class="card p-2 pt-3 pb-3" style="background-color:#262626;border-bottom-style:solid;border-width:1px;border-color:#343A40;border-radius:5px;">
+          <section class="row">
+            <section class="col-1 bg-danger pl-4">
+              <%= image_tag post.upload, :class=> "img-circular" %>
+            </section>
+            <section class="col-8 pt-3 ml-5">
+              <p> <%= link_to post.caption, post_path(post.id) %></p>
+            </section>
+          </section>
+        </section>
+      <% end %>
+    <% end %>
+  </section>
+
+</section>
+</section>

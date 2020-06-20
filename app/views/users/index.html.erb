@@ -1,29 +1,27 @@
-<style>
-.img-circular{
- width: 60px;
- height: 60px;
- background-size: cover;
- border-radius: 100px;
- -webkit-border-radius: 100px;
- -moz-border-radius: 100px;
- float: left;
- float: top;
-}
-</style>
-
 <section class="container text-center">
 
 <section class="row">
-  <section class="col bg-info">
-  <p>Hello, <%= current_user.email %>!</p>
+  <section class="col-1">
   </section>
-  <section class="col-6 bg-dark">
+  <section class="col-3">
+    <section class="bg-danger m-1 pl-1 pr-1 pt-4 pb-4">
+    <p>Hello, <%= current_user.email %>!</p>
+    <%= button_to 'Your Pets', user_path(current_user.id), :class=> "button2", :method => :get %>
+    </section>
+
+    <section class="bg-danger m-1 p-4 text-center">
+      <%= button_to 'Register New Pet', new_pet_path, :class => "button2", :method => :get %> <br>
+      <%= button_to 'Look for Pets', pets_path, :class => "button2", :method => :get %><br>
+      <%= button_to 'Logout', destroy_user_session_path, :class => "button2", :method => :delete %>
+    </section>
+  </section>
+  <section class="col-7 bg-dark">
     <% @posts.each do |post| %>
       <% pet = Pet.find(post.pet_id) %>
       <% if current_user.follows.include? "#{post.pet_id}" or pet.user_id == current_user.id %>
-        <section class="card p-2 pt-3 pb-3">
+        <section class="card p-2 pt-3 pb-3" style="background-color:#262626;border-bottom-style:solid;border-width:1px;border-color:#343A40;border-radius:5px;">
           <section class="row">
-            <section class="col-1 bg-danger ">
+            <section class="col-1 bg-danger pl-4">
               <%= image_tag post.upload, :class=> "img-circular" %>
             </section>
             <section class="col-8 pt-3 ml-5">
@@ -33,10 +31,6 @@
         </section>
       <% end %>
     <% end %>
-  </section>
-  <section class="col bg-danger">
-    <%= link_to 'Look for Pets', pets_path %><br>
-    <%= link_to 'Logout', destroy_user_session_path, :method => :delete %>
   </section>
 
 </section>

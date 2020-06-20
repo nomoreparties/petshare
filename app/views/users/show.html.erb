@@ -1,0 +1,22 @@
+<section class="container">
+
+  <h1>Your Pets</h1>
+  <section class="container text-center">
+
+  <section class="row">
+
+  <% @pets.each do |pet| %>
+    <% if pet.user_id == @user.id %>
+      <section class="text-center p-3 bg-danger" style="border:solid;border-radius:10px;border-color:black;font-size:20px;">
+        <%= image_tag pet.upload, :class=> "img-circular2" %><br>
+        <%= button_to "#{pet.name}", pet_path(pet.id), :method => :get, class: "button1" %>
+      </section>
+      &nbsp
+    <% end %>
+  <% end %>
+
+  </section>
+
+  </section>
+
+</section>

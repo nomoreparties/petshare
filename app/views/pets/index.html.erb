@@ -1,10 +1,20 @@
-<br>
+<section class="container">
 
-<% @pets.each do |pet| %>
-  <li>
-    Name: <%= link_to pet.name, pet_path(pet.id) %>, Animal: <%= pet.animal %>, Breed: <%= pet.breed %> owned by <%= pet.user.email %> <br>
-  </li>
-<% end %>
+<table width="70%" style="margin-left:auto;margin-right:auto ">
+  <tr class="text-center" style="border-bottom:solid;border-width:1px;background-color:#262626;border-color:#343A40;">
+    <th></th>
+    <th>Name</th>
+    <th>Animal</th>
+    <th>Breed / Type of Animal</th>
+  </tr>
+  <% @pets.each do |pet| %>
+    <tr class="bg-danger text-center" style="border-bottom:solid;border-width:1px;border-color:#343A40;font-size:17px;font-weight:bold;">
+      <td class="p-2" width="7%"><%= image_tag pet.upload, :class=> "img-circular" %></td>
+      <td style="background-color:#eb4949;"><%= button_to pet.name, pet_path(pet.id), class: "button1", :method => :get %></td>
+      <td><%= pet.animal %></td>
+      <td style="background-color:#eb4949;"><%= pet.breed %></td>
+    </tr>
+  <% end %>
+</table>
 
-<%= link_to 'Register New Pet', new_pet_path %> <br>
-<%= link_to 'Home', users_path %>
+</section>

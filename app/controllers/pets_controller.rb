@@ -1,6 +1,6 @@
 class PetsController < ApplicationController
   def index
-    @pets = Pet.all
+    @pets = Pet.all.reverse
   end
 
   def new
@@ -19,13 +19,17 @@ class PetsController < ApplicationController
 
   def show
     @post = Post.new
-    @posts = Post.all
+    @posts = Post.all.reverse
     @pet = Pet.find(params[:id])
     @followed = 0
   end
 
+  def list
+    @pets = Pet.all
+  end
+
   private
     def pet_params
-      params.require(:pet).permit(:name, :breed, :animal)
+      params.require(:pet).permit(:name, :breed, :animal, :upload)
     end
 end

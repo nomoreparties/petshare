@@ -1,11 +1,30 @@
-<h1>Register New Pet:</h1>
+<section class="container">
+  <section class="row" style="justify-content:center;">
+    <section class="text-center p-3" style="border:solid;border-radius:10px;border-color:black;">
 
-<%= form_for @pet do |form| %>
-  <%= form.label :name %>
-  <%= form.text_field :name %> <br>
-  <%= form.label :animal %>
-  <%= form.text_field :animal %> <br>
-  <%= form.label :breed %>
-  <%= form.text_field :breed %> <br>
-  <%= form.submit %> <br>
-<% end %>
+      <h1>Register New Pet:</h1>
+
+      <%= form_for @pet do |form| %>
+        <%= form.label :name, "Name:" %>
+        <section style="float:right;">
+        <%= form.text_field :name, required: true %>
+        </section><br>
+        <%= form.label :animal, "Animal:" %>
+        <section style="float:right;">
+        <%= form.text_field :animal, required: true %>
+        </section><br>
+        <%= form.label :breed, "Breed / Type of Animal:" %> &nbsp
+        <section style="float:right;">
+        <%= form.text_field :breed, required: true %>
+        </section><br><br>
+        <section class="text-center p-3" style="border:solid;border-radius:10px;border-color:black;">
+        <%= form.label :upload, "Upload a Profile Picture:" %><br>
+        <%= form.file_field :upload, required: true, accept:'image/*' %><br>
+        </section><br>
+        <%= form.submit class: 'button3' %>
+         <br>
+      <% end %>
+
+    </section>
+  </section>
+</section>
