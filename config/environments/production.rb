@@ -132,7 +132,7 @@ Rails.application.configure do
   {
 
     :address            => 'smtp.sendgrid.net',
-    :port               => 587,
+    :port               => 25,
     :user_name          => ENV["SENDGRID_USERNAME"],
     :password           => ENV["SENDGRID_PASSWORD"]
   }
