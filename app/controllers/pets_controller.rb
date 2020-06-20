@@ -26,8 +26,9 @@ class PetsController < ApplicationController
 
   def destroy
     @pet = Pet.find(params[:id])
+    @posts = Post.where(pet_id: "#{@pet.id}")
 
-    if @pet.destroy
+    if @posts.delete_all && @pet.destroy
       redirect_to root_path
     end
   end
