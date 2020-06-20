@@ -131,11 +131,11 @@ Rails.application.configure do
   ActionMailer::Base.smtp_settings =
   {
 
-    :address            => 'smtp.mailgun.com',
+    :address            => 'smtp.gmail.com',
     :port               => 587,
-    :domain             => 'sandbox702ecfa197b04886a2a284b4f320bbd6.mailgun.org', #you can also use google.com
+    :domain             => 'gmail.com', #you can also use google.com
     :authentication     => :plain,
-    :user_name          => 'postmaster@sandbox702ecfa197b04886a2a284b4f320bbd6.mailgun.org',
-    :password           => '01b0b243c1f784075300516b04f784c1-9a235412-6ad3a518'
+    :user_name          => 'matthewdominicchu@gmail.com',
+    :password           => 'Windows_44'
   }
 end
