@@ -63,6 +63,7 @@ Rails.application.configure do
 
   #These settings are for the sending out email for active admin and consequently the   devise mailer
   ActionMailer::Base.delivery_method = :smtp
+  config.action_mailer.delivery_method = :letter_opener
   config.action_mailer.perform_deliveries = true
   ActionMailer::Base.raise_delivery_errors = true
   ActionMailer::Base.smtp_settings =
@@ -71,6 +72,6 @@ Rails.application.configure do
     :address            => 'smtp.sendgrid.net',
     :port               => 587,
     :user_name          => 'apikey',
-    :password           => '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'
+    :password           => ''
   }
 end
