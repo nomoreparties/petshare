@@ -24,6 +24,8 @@ gem 'jbuilder', '~> 2.7'
 
 gem 'bcrypt'
 
+gem "letter_opener", :group => :development
+
 gem 'devise'
 
 gem 'bootstrap'

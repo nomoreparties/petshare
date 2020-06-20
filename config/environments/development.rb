@@ -60,4 +60,18 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   # config.file_watcher = ActiveSupport::EventedFileUpdateChecker
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  #These settings are for the sending out email for active admin and consequently the   devise mailer
+  ActionMailer::Base.delivery_method = :smtp
+  config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.perform_deliveries = true
+  ActionMailer::Base.raise_delivery_errors = true
+  ActionMailer::Base.smtp_settings =
+  {
+
+    :address            => 'smtp.sendgrid.net',
+    :port               => 465,
+    :user_name          => 'apikey',
+    :password           => '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'
+  }
 end

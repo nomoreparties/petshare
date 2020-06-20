@@ -131,11 +131,9 @@ Rails.application.configure do
   ActionMailer::Base.smtp_settings =
   {
 
-    :address            => 'smtp.gmail.com',
-    :port               => 587,
-    :domain             => 'gmail.com', #you can also use google.com
-    :authentication     => :plain,
-    :user_name          => 'matthewdominicchu@gmail.com',
-    :password           => 'Windows_44'
+    :address            => 'smtp.sendgrid.net',
+    :port               => 465,
+    :user_name          => 'apikey',
+    :password           => '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'
   }
 end
