@@ -23,6 +23,7 @@
     <% @posts.each do |post| %>
       <% pet = Pet.find(post.pet_id) %>
       <% if current_user.follows.include? "#{post.pet_id}" or pet.user_id == current_user.id %>
+        <% @if = 1 %>
         <section class="card p-2 pt-3 pb-3" style="background-color:#262626;border-bottom-style:solid;border-width:1px;border-color:#343A40;border-radius:5px;">
           <section class="row">
             <section class="col-1 bg-danger pl-4">
@@ -34,6 +35,13 @@
           </section>
         </section>
       <% end %>
+    <% end %>
+    <% if @if == 0 %>
+    <section class="card p-3 pt-4 text-center" style="background-color:#262626;border-bottom-style:solid;border-width:1px;border-color:#343A40;border-radius:5px;">
+      <section class="text-center">
+        <p> No posts to show :( Why not try following a pet? </p>
+      </section>
+    </section>
     <% end %>
   </section>
 

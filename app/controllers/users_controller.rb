@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def index
     @posts = Post.all.reverse
+    @if = 0
   end
 
   def follow
