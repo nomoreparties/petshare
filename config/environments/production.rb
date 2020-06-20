@@ -123,4 +123,19 @@ Rails.application.configure do
   config.assets.digest = true
 
   Rails.application.routes.default_url_options[:host] = 'petshare.heroku.com'
+
+  #These settings are for the sending out email for active admin and consequently the   devise mailer
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.perform_deliveries = true
+  ActionMailer::Base.raise_delivery_errors = true
+  ActionMailer::Base.smtp_settings =
+  {
+
+    :address            => 'smtp.mailgun.com',
+    :port               => 587,
+    :domain             => 'sandbox702ecfa197b04886a2a284b4f320bbd6.mailgun.org', #you can also use google.com
+    :authentication     => :plain,
+    :user_name          => 'postmaster@sandbox702ecfa197b04886a2a284b4f320bbd6.mailgun.org',
+    :password           => '01b0b243c1f784075300516b04f784c1-9a235412-6ad3a518'
+  }
 end
