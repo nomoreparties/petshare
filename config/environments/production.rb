@@ -133,7 +133,7 @@ Rails.application.configure do
 
     :address            => 'smtp.sendgrid.net',
     :port               => 465,
-    :user_name          => 'apikey',
-    :password           => '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'
+    :user_name          => ENV["SMTP_USERNAME"],
+    :password           => ENV["SMTP_PASSWORD"]
   }
 end
