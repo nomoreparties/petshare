@@ -122,7 +122,7 @@ Rails.application.configure do
   # Generate digests for assets URLs
   config.assets.digest = true
 
-  Rails.application.routes.default_url_options[:host] = 'petshare.heroku.com'
+  Rails.application.routes.default_url_options[:host] = 'petshare.herokuapp.com'
 
   #These settings are for the sending out email for active admin and consequently the   devise mailer
   ActionMailer::Base.delivery_method = :smtp
