@@ -121,4 +121,6 @@ Rails.application.configure do
 
   # Generate digests for assets URLs
   config.assets.digest = true
+
+  config.action_mailer.default_url_options = { :host => 'blooming-tor-08787.herokuapp.com' }
 end
