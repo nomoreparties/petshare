@@ -31,9 +31,8 @@
             </section>
             <section class="col-8 pt-3 ml-5">
               <p> <%= link_to post.caption, post_path(post.id) %> by <%= link_to pet.name, pet_path(pet.id) %></p>
-              <p style="font-size:11px;"> <%= post.created_at %></p>
             </section>
-            <section class="col-2 p-2">
+            <section class="col-2 pt-2">
               <% if pet.user_id == current_user.id %>
                 <p><%= image_tag('red.png') %> <strong><%= post.like %></strong></p>
               <% else %>

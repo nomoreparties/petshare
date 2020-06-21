@@ -51,11 +51,10 @@
             <section class="col-1 bg-danger pl-4">
               <%= image_tag post.upload, :class=> "img-circular" %>
             </section>
-            <section class="col-8 pt-3 ml-5">
+            <section class="col-8 pt-3 ml-5 inline-block">
               <p> <%= link_to post.caption, post_path(post.id) %></p>
-              <p style="font-size:11px;"> <%= post.created_at %></p>
             </section>
-            <section class="col-2" style="padding-top:4%;">
+            <section class="col-2 pt-2">
               <% if @pet.user_id == current_user.id %>
                 <p><%= image_tag('red.png') %> <strong><%= post.like %></strong></p>
               <% else %>
