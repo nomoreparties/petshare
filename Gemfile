@@ -24,6 +24,9 @@ gem 'jbuilder', '~> 2.7'
 
 gem 'bcrypt'
 
+gem 'paperclip'
+gem 'aws-sdk'
+
 gem "letter_opener", :group => :development
 
 gem 'devise'

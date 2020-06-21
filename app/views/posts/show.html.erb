@@ -18,7 +18,7 @@
       <br>
 
       <% if @post.upload.attached? %>
-        <%= image_tag @post.upload, height: 500 %>
+        <%= image_tag @post.upload.url, height: 500 %>
       <% end %>
 
     </section>
