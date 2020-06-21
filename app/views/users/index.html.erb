@@ -32,6 +32,17 @@
             <section class="col-8 pt-3 ml-5">
               <p> <%= link_to post.caption, post_path(post.id) %> by <%= link_to pet.name, pet_path(pet.id) %></p>
             </section>
+            <section class="col-2 pt-2">
+              <% if pet.user_id == current_user.id %>
+                <p><%= image_tag('red.png') %> <strong><%= post.like %></strong></p>
+              <% else %>
+                <% if current_user.likes.include? "#{post.id}" %>
+                  <%= link_to image_tag('red.png'), post_unlike_path(post), method: :post, :class => "like" %> <%= post.like %>
+                <% else %>
+                  <%= link_to image_tag('heart.png'), post_like_path(post), method: :post, :class => "like" %> <%= post.like %>
+                <% end %>
+              <% end %>
+            </section>
           </section>
         </section>
       <% end %>
