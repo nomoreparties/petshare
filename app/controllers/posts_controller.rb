@@ -27,9 +27,8 @@ class PostsController < ApplicationController
     @post = Post.find(params[:post_id])
     @post.increment! :like
     @user.likes << params[:post_id]
-    if @user.save
-      redirect_back(fallback_location: root_path)
-    end
+    @user.save
+    redirect_back(fallback_location: root_path)
   end
 
   def unlike
@@ -37,9 +36,8 @@ class PostsController < ApplicationController
     @post = Post.find(params[:post_id])
     @post.decrement! :like
     @user.likes.delete(params[:post_id])
-    if @user.save
-      redirect_back(fallback_location: root_path)
-    end
+    @user.save
+    redirect_back(fallback_location: root_path)
   end
 
   private

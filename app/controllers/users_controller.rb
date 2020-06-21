@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @posts = Post.all.reverse
+    @posts = Post.all.sort_by(&:id).reverse
     @if = 0
   end
 
