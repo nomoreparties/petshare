@@ -17,7 +17,7 @@
 
       <% if current_user.id == @pet.user_id %>
         <section class="bg-danger m-1 p-4 text-center">
-        <%= button_to 'Delete Pet', pet_path(@pet), method: :delete, class: "button1" %>
+        <%= button_to 'Delete Pet', pet_path(@pet), method: :delete, class: "button1", data: {confirm: "Are you sure?"} %>
         </section>
         <section class="text-center p-3" style="border:solid;border-radius:10px;border-color:black;">
         <h3>Make a New Post:</h3>

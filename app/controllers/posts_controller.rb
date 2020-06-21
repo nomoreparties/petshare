@@ -22,6 +22,26 @@ class PostsController < ApplicationController
     end
   end
 
+  def like
+    @user = current_user
+    @post = Post.find(params[:post_id])
+    @post.increment! :like
+    @user.likes << params[:post_id]
+    if @user.save
+      redirect_back(fallback_location: root_path)
+    end
+  end
+
+  def unlike
+    @user = current_user
+    @post = Post.find(params[:post_id])
+    @post.decrement! :like
+    @user.likes.delete(params[:post_id])
+    if @user.save
+      redirect_back(fallback_location: root_path)
+    end
+  end
+
   private
     def post_params
       params.require(:post).permit(:caption, :pet_id, :upload)
