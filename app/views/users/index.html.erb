@@ -27,7 +27,7 @@
         <section class="card p-2 pt-3 pb-3" style="background-color:#262626;border-bottom-style:solid;border-width:1px;border-color:#343A40;border-radius:5px;">
           <section class="row">
             <section class="col-1 bg-danger pl-4">
-              <%= image_tag post.upload.url, :class=> "img-circular" %>
+              <%= image_tag post.upload, :class=> "img-circular" %>
             </section>
             <section class="col-8 pt-3 ml-5">
               <p> <%= link_to post.caption, post_path(post.id) %> by <%= link_to pet.name, pet_path(pet.id) %></p>
