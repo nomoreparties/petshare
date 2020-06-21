@@ -19,7 +19,7 @@ class PetsController < ApplicationController
 
   def show
     @post = Post.new
-    @posts = Post.all.reverse
+    @posts = Post.all.sort_by(&:id).reverse
     @pet = Pet.find(params[:id])
     @followed = 0
   end

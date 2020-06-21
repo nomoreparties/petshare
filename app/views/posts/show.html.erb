@@ -9,14 +9,12 @@
       <h1><%= @post.caption %></h1>
       <% if @pet.user_id == current_user.id %>
         <%= button_to 'Delete', post_path(@post), :method => :delete, class: "button1", data: {confirm: "Are you sure?"} %>
-        <br><p><%= image_tag('red.png') %> <strong><%= @post.like %></strong></p>
-      <% else %>
+      <% end %>
         <% if current_user.likes.include? "#{@post.id}" %>
           <br><p><%= link_to image_tag('red.png'), post_unlike_path(@post), method: :post, :class => "like" %> <strong><%= @post.like %></strong></p>
         <% else %>
           <br><p><%= link_to image_tag('heart.png'), post_like_path(@post), method: :post, :class => "like" %> <strong><%= @post.like %></strong></p>
         <% end %>
-      <% end %>
       <br>
 
       <% if @post.upload.attached? %>
