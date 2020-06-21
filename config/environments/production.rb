@@ -131,9 +131,10 @@ Rails.application.configure do
   ActionMailer::Base.smtp_settings =
   {
 
-    :address            => 'smtp.sendgrid.net',
-    :port               => 25,
-    :user_name          => ENV["SENDGRID_USERNAME"],
-    :password           => ENV["SENDGRID_PASSWORD"]
+    :address            => 'smtp.gmail.net',
+    :port               => 587,
+    :user_name          => ENV["GMAIL_USERNAME"],
+    :password           => ENV["GMAIL_PASSWORD"],
+    :authentication     => "plain"
   }
 end
